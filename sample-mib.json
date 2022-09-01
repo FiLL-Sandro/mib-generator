@@ -1,0 +1,38 @@
+{
+	"imports":
+	[
+		["MODULE-IDENTITY", "OBJECT-IDENTITY", "OBJECT-TYPE", "SNMPv2-SMI"],
+		["elSoftware", "ELTEX-SMI-ACTUAL"],
+	],
+	"module-identity":
+	{
+		"id": 7,
+		"name": "test-module",
+		"root": "elSoftware",
+		"LAST-UPDATED": "202208290000Z",
+		"ORGANIZATION": "Information about a company",
+		"CONTACT-INFO": "Some contact info",
+		"DESCRIPTION ": "Description of the MIB tree",
+		"REVISION    ": "202208290000Z",
+		"DESCRIPTION ": "Description of current revision",
+	},
+	"tree":
+	{
+		"node1":
+		{
+			"status     ": "current",
+			"description": "Node description",
+			
+			"contain":
+			{
+				"obj1":
+				{
+					"status     ": "current",
+					"description": "Object description",
+					"syntax     ": "INTEGER",
+					"max-access ": "read-only",
+				}
+			}
+		},
+	}
+}
