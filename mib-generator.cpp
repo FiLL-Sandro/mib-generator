@@ -2,9 +2,7 @@
 #include <json-c/json.h>
 
 #include "log.h"
-
-static const char* input_file = NULL;
-static const char* output_file = NULL;
+#include "MibGenerator.h"
 
 static void usage()
 {
@@ -12,7 +10,7 @@ static void usage()
 	       "mib-generator <input-file> <output-file>\n");
 }
 
-int main (int argc, char* argv[])
+int main (int argc, char *argv[])
 {
 	if (argc != 3)
 	{
@@ -20,22 +18,10 @@ int main (int argc, char* argv[])
 		return -1;
 	}
 
-	int rc = 0;
-	input_file = argv[1];
-	output_file = argv[2];
+	MibGenerator me(argv[1], argv[2]);
+	me.run();
 
-	json_object *mib_json = json_object_from_file(input_file);
-	if (!mib_json)
-	{
-		log("cannot parse JSON-file(input_file == '%s')\n", input_file);
-		rc = -1;
-		goto exit;
-	}
+	me.dump_json_entity();
 
-	printf("The json file:\n\n%s\n", json_object_to_json_string_ext(mib_json, JSON_C_TO_STRING_PRETTY));
-
-exit:
-	if (mib_json)
-		json_object_put(mib_json);
-	return rc;
+	return 0;
 }

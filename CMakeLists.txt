@@ -7,6 +7,7 @@ project(mib-generator
 
 set(srcs
     mib-generator.cpp
+    MibGenerator.cpp
     )
 add_executable(${PROJECT_NAME} ${srcs})
 
